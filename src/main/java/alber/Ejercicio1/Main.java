@@ -32,7 +32,7 @@ public class Main {
         * y le pasamos por constructor al hilo cada fichero, y lo inicializamos*/
         System.out.println("\nCON HILOS");
         for (int i = 0; i < args.length; i++) {
-            HiloContadorChars hilo = new HiloContadorChars(new File(args[i]));
+           HiloContadorChars hilo = new HiloContadorChars(new File(args[i]));
             hilo.start();
         }
 
