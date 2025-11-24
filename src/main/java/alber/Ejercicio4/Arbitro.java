@@ -1,4 +1,4 @@
-package alber.Ejercicio3;
+package alber.Ejercicio4;
 
 public class Arbitro {
 

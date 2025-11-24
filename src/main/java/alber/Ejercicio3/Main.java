@@ -1,39 +1,29 @@
 package alber.Ejercicio3;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        /*Hacemos una constante para que si queremos cambiar el numero de jugadores, cambiamos el numero y se adapta todo*/
-        final int TOTAL_JUGADORES = 5;
+    public static void main(String[] args) throws IOException, InterruptedException {
+        //creamos el fichero con el texto a leer
+        File archivoTexto = new File("fichTextoEj3.txt");
 
-        Arbitro arbitro = new Arbitro(TOTAL_JUGADORES);
+        //cola, consumidores y productor
+        Cola cola = new Cola();
+        Productor p = new Productor(archivoTexto,cola);
+        Consumidor c = new Consumidor(archivoTexto,cola);
+        Consumidor c2 = new Consumidor(archivoTexto,cola);
 
-        System.out.println("NUMERO A ADIVINAR = " + arbitro.getNumeroAdivinar());
+        p.start();
+        c.start();
 
-        /*podemos crear así a los jugadores de forma que si cambiamos el numero total se crearan sin tocar nada ese numero de jugadores
-        * o bien podemos hacerlo a mano, pero esto es más correcto.*/
-        for (int i = 0; i < TOTAL_JUGADORES; i++) {
-            Jugador j = new Jugador (i + 1,arbitro);
-            j.start();
-        }
-/*
-        Jugador j1 = new Jugador(1,arbitro);
-        Jugador j2 = new Jugador(2,arbitro);
-        Jugador j3 = new Jugador(3,arbitro);
-        Jugador j4 = new Jugador(4,arbitro);
-        Jugador j5 = new Jugador(5,arbitro);
+        p.join();
+        c.join();
 
-        j1.start();
-        j2.start();
-        j3.start();
-        j4.start();
-        j5.start();
+        //no entiendo como hacer varios consumidores solo se ejecuta el primero
+       // c2.start();
 
-        j1.join();
-        j2.join();
-        j3.join();
-        j4.join();
-        j5.join();
-*/
 
     }
+
 }
