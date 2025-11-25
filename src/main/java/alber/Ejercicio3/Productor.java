@@ -15,7 +15,7 @@ public Productor(File archivoTexto, Cola cola){
     @Override
     public void run() {
     /*He leido todo el archivo y lo he convertido a un array de chars, pero se puede hacer leyendo con un read
-    * y pasandolo*/
+    * y pasandolo a char el valor de int que te den*/
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoTexto))) {
             String linea;
             StringBuilder sb= new StringBuilder();
